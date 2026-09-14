@@ -17,6 +17,10 @@ npm run dev
 
 The application will be available at `http://localhost:5173/`.
 
+## Links
+
+[Live Demo](https://astronaut1984.github.io/Github-Profile/)
+
 ## Licensing
 
 The code in this project is licensed under MIT license.
