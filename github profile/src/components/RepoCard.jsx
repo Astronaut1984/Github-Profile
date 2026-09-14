@@ -3,6 +3,31 @@ import ForkIcon from "../assets/Fork.svg?react";
 import StarIcon from "../assets/Star.svg?react";
 
 function RepoCard({ repo }) {
+  function treatAsUTC(date) {
+    var result = new Date(date);
+    result.setMinutes(result.getMinutes() - result.getTimezoneOffset());
+    return result;
+  }
+
+  function getDaysSinceUpdate(startDate) {
+    const endDate = new Date();
+    var millisecondsPerDay = 24 * 60 * 60 * 1000;
+    const daysAgo = Math.round(
+      (treatAsUTC(endDate) - treatAsUTC(startDate)) / millisecondsPerDay,
+    );
+    switch (daysAgo) {
+      case 0:
+        return "Today";
+        break;
+      case 1:
+        return `${daysAgo} day ago`;
+        break;
+      default:
+        return `${daysAgo} days ago`;
+        break;
+    }
+  }
+
   return (
     <div
       className="card-gradient rounded-lg p-5 **:truncate cursor-pointer"
@@ -25,7 +50,9 @@ function RepoCard({ repo }) {
         <span className="flex items-center gap-1">
           <StarIcon className="w-4 h-4" /> {repo.stargazers_count}
         </span>
-        <span className="ml-auto">Updated at: {repo.updated_at}</span>{" "}
+        <span className="ml-auto">
+          Updated {getDaysSinceUpdate(repo.updated_at)}
+        </span>{" "}
       </div>
     </div>
   );
