@@ -139,7 +139,6 @@ export default function GithubSearchBox({ setData }) {
                   <div
                     className="flex items-center gap-3 px-4 py-3 hover:bg-slate-700/40 transition-colors"
                     onClick={() => {
-                      console.log(user);
                       setOpen(false);
                       setData(user.url, user.repos_url);
                     }}

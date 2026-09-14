@@ -5,10 +5,10 @@ import RepoCard from "../components/RepoCard";
 import SearchIcon from "../assets/Search.svg?react";
 import { useEffect, useState } from "react";
 import GithubSearchBox from "../components/SearchBox";
+import HeroImage from "../assets/hero-image-github-profile-sm.jpg";
 
 function Home() {
   useEffect(() => {
-    console.log(userRepos);
   }, []);
 
   const [userData, setUserData] = useState(null);
@@ -19,7 +19,6 @@ function Home() {
     if (user.ok && repos.ok) {
       const userJSON = await user.json();
       const repoJSON = await repos.json();
-      console.log(userJSON);
       setUserData(userJSON);
       setUserRepos(repoJSON);
     }
@@ -30,7 +29,7 @@ function Home() {
         {/* Banner */}
         <div className="relative">
           <img
-            src="src\assets\hero-image-github-profile-sm.jpg"
+            src={HeroImage}
             alt=""
             className="w-full h-44 sm:h-56 lg:h-60 object-cover"
           />
